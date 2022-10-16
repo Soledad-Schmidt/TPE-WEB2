@@ -2,7 +2,6 @@
 class BrandModel {
            
     private function connect (){
-        //abro conexion a la base de datos
         $db = new PDO('mysql:host=localhost;'.'dbname=db_socks;charset=utf8', 'root', '');
         return $db;
     }
@@ -17,7 +16,6 @@ class BrandModel {
         $query = $this->db->prepare('SELECT * FROM brand');
         $query->execute();
         $brands = $query->fetchAll(PDO::FETCH_OBJ);
-
         return $brands;
     }
 
@@ -29,14 +27,12 @@ class BrandModel {
                                     WHERE name=?');
         $query->execute([$id]);
         $socksByBrand = $query->fetchAll(PDO::FETCH_OBJ);
-
         return $socksByBrand;
     }
 
     function insertNewBrand($name) {
         $query = $this->db->prepare('INSERT INTO brand (name) VALUE (?)');
         $query->execute([$name]);
-   
         return $this->db->lastInsertId();
     }
 
