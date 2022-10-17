@@ -6,7 +6,7 @@
         <input type="text" name="name" required>
 
         <label>Contraseña</label>
-        <input type="text" name="password" required>
+        <input type="password" name="password" required>
 
         {if $error}
             <div class="alert">

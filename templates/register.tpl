@@ -7,7 +7,7 @@
             <input type="text" name="name" required>
 
             <label>Contraseña</label>
-            <input type="text" name="password" required >
+            <input type="password" name="password" required >
 
             <button type="submit" class="btn_form">Crear Cuenta</button>
         </form>
