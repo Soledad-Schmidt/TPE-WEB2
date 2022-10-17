@@ -3,6 +3,7 @@
 class UserModel {
 
     private function connect (){
+        //abro conexion a la base de datos
         $db = new PDO('mysql:host=localhost;'.'dbname=db_socks;charset=utf8', 'root', '');
         return $db;
     }

@@ -2,6 +2,7 @@
 class SockModel {
        
     private function connect (){
+        //abro conexion a la base de datos
         $db = new PDO('mysql:host=localhost;'.'dbname=db_socks;charset=utf8', 'root', '');
         return $db;
     }
@@ -12,7 +13,9 @@ class SockModel {
         $this->db = $this->connect();
     }
 
+    //trae todas las medias/items de la DB 
     function getAllSocks() {
+        // 2.enviamos la consulta a la base de datos. En PDO primero tengo que preparar la consulta y luego ejecuto (la envio)
         $query = $this->db->prepare('SELECT a. *, b.* 
                                     FROM sock a 
                                     INNER JOIN brand b
@@ -41,6 +44,8 @@ class SockModel {
     function insertSock($model, $color, $size, $price, $brand) {
         $query = $this->db->prepare('INSERT INTO sock (model, color, size, price, id_brand) VALUES (?, ?, ?, ?, ?)');
         $query->execute([$model, $color, $size, $price, $brand]);
+        
+        //obtengo y devuelvo el ID de la media nueva
         return $this->db->lastInsertId();
     }
 

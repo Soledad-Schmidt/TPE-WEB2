@@ -20,21 +20,27 @@ class SockController {
     }
 
     function showSocks () {
+        //obtengo las medias del modelo
         $socks = $this->modelSocks->getAllSocks();
+
+        //actualizo la vista
         $this->view->showSocks($socks);
     }
 
     function showSock($id) {
         $sock = $this->modelSocks->getSock($id);
+
         $this->view->showSock($sock);
     }
 
     function delSock($id) {
+    
         $this->modelSocks->deleteSock($id);
         header("Location:" . BASE_URL . "socks");
     }
 
     function addSock() {
+       
         $model = $_POST['model'];
         $color = $_POST['color'];
         $size = $_POST['size'];
@@ -45,11 +51,13 @@ class SockController {
     }
 
     function showInsertForm() {
+    
         $brand = $this->modelBrands->getAllBrands();
         $this->view->showInsertForm($brand);
     }
 
     function showUpdateForm($id_sock){
+  
         $brand = $this->modelBrands->getAllBrands();
         $sock = $this->modelSocks->getSock($id_sock);
         $this->view->showUpdateForm($id_sock, $brand, $sock);

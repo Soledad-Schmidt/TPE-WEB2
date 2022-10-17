@@ -67,7 +67,7 @@ switch ($params[0]) {
         $brandController->addBrand();
         break;
 
-    case 'detelebrand':
+    case 'deletebrand':
         $brandController = new BrandController();
         $brandController->delBrand($params[1]);
         break;
