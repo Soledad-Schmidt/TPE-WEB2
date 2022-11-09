@@ -28,8 +28,7 @@ class SockModel {
     function getSock ($id){
         $query = $this->db->prepare('SELECT a. *, b.* 
                                     FROM sock a 
-                                    INNER JOIN brand b
-                                    ON a.id_brand = b.id_brand
+                                    INNER JOIN brand b ON a.id_brand = b.id_brand
                                     WHERE id_sock=?');
         $query->execute([$id]);
         $sock = $query->fetch(PDO::FETCH_OBJ);
@@ -42,7 +41,8 @@ class SockModel {
     }
 
     function insertSock($model, $color, $size, $price, $brand) {
-        $query = $this->db->prepare('INSERT INTO sock (model, color, size, price, id_brand) VALUES (?, ?, ?, ?, ?)');
+        $query = $this->db->prepare('INSERT INTO sock (model, color, size, price, id_brand) 
+                                    VALUES (?, ?, ?, ?, ?)');
         $query->execute([$model, $color, $size, $price, $brand]);
         
         //obtengo y devuelvo el ID de la media nueva

@@ -7,7 +7,10 @@
             <th>Color</th>
             <th>Talle</th>
             <th>Precio</th>
-            <th>Marca</th>  
+            <th>Marca</th>  {if (isset($smarty.session.USER_ID))}
+                <td></td>
+                <td></td>  
+            {/if}
         </tr>
         {foreach from=$socks item=$i}
             <tr>
