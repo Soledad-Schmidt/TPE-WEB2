@@ -12,7 +12,9 @@ class BrandController {
     function __construct() {
         $this->model = new BrandModel();
         $this->view = new BrandView();
-        $this->authHelper = new AuthHelper(); 
+        
+        $authHelper = new AuthHelper();
+        $authHelper->checkLoggedIn();
     }
 
     function showBrands() {
@@ -26,30 +28,30 @@ class BrandController {
     }
 
     function brandForm() {
-        $this->authHelper->checkLoggedIn();
+        
         $this->view->showBrandForm();
     }
 
     function addBrand() {
-        $this->authHelper->checkLoggedIn();
+   
         $name = $_POST['name'];
         $this->model->insertNewBrand($name);
         header("Location:" . BASE_URL . "brands");
     }
 
     function delBrand($id) {
-        $this->authHelper->checkLoggedIn();
+    
         $this->model->deleteBrand($id);
         header("Location:" . BASE_URL . "brands");
     }
 
     function showBrandUpdateForm($id_brand) {
-        $this->authHelper->checkLoggedIn();
+     
         $this->view->showBrandUpdateForm($id_brand);
     }
 
     function upBrand() {
-        $this->authHelper->checkLoggedIn();
+
         $name = $_POST['name'];
         $id_brand = $_POST['id_brand'];
         $this->model->updateBrand($name, $id_brand);

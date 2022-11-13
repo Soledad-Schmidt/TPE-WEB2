@@ -15,32 +15,32 @@ class SockController {
         $this->modelSocks = new SockModel();
         $this->modelBrands = new BrandModel();
         $this->view = new SockView();
-        $this->authHelper = new AuthHelper();        
+         
+        $authHelper = new AuthHelper();
+        $authHelper->checkLoggedIn();
+       
+   
     }
 
     function showSocks () {
         //obtengo las medias del modelo
         $socks = $this->modelSocks->getAllSocks();
-
         //actualizo la vista
         $this->view->showSocks($socks);
     }
 
     function showSock($id) {
         $sock = $this->modelSocks->getSock($id);
-
         $this->view->showSock($sock);
     }
 
     function delSock($id) {
-        
-        $this->authHelper->checkLoggedIn();
         $this->modelSocks->deleteSock($id);
         header("Location:" . BASE_URL . "socks");
     }
 
     function addSock() {
-        $this->authHelper->checkLoggedIn();
+       
         $model = $_POST['model'];
         $color = $_POST['color'];
         $size = $_POST['size'];
@@ -51,20 +51,20 @@ class SockController {
     }
 
     function showInsertForm() {
-        $this->authHelper->checkLoggedIn();
+      
         $brand = $this->modelBrands->getAllBrands();
         $this->view->showInsertForm($brand);
     }
 
     function showUpdateForm($id_sock){
-        $this->authHelper->checkLoggedIn();
+     
         $brand = $this->modelBrands->getAllBrands();
         $sock = $this->modelSocks->getSock($id_sock);
         $this->view->showUpdateForm($id_sock, $brand, $sock);
     }
     
     function upSock() {
-        $this->authHelper->checkLoggedIn();
+        
         $model = $_POST['model'];
         $color = $_POST['color'];
         $size = $_POST['size'];
