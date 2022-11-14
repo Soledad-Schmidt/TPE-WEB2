@@ -21,6 +21,11 @@ switch ($params[0]) {
         $authController = new AuthController();
         $authController->showWelcome();
         break;
+    
+    case 'sale':
+        $sockController = new SockController();
+        $sockController->showSale(); 
+        break;
 
     case 'socks':
         $sockController = new SockController();

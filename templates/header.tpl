@@ -32,6 +32,7 @@
         <nav class="navigation">
             <li class="btn_nav"><a href="socks">Medias</a></li>
             <li class="btn_nav"><a href="brands">Marcas</a></li>
+            <li class="btn_nav"><a href="sale">Ofertas</a></li>
             {if isset($smarty.session.USER_ID)}
                 <li class="btn_nav"><a href="insertsock">Insertar Media</a></li>
                 <li class="btn_nav"><a href="insertbrand">Insertar Marca</a></li>

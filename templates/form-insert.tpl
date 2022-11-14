@@ -26,6 +26,12 @@
             <option value="{$item->id_brand}"> {$item->name} </option>
             {/foreach}
         </select>
+
+        <label>Oferta</label>
+        <select name="sale" required>
+            <option value="si">Si</option>
+            <option value="no">No</option>
+        </select>
             
         <button type="submit" class="btn_form">Guardar</button>
     </form>

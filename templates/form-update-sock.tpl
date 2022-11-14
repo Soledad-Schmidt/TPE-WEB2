@@ -28,6 +28,12 @@
         </select>
 
         <input type="text" name="id_sock" value="{$sock->id_sock}" hidden>
+
+        <label>Oferta</label>
+        <select name="sale" required>
+            <option value="si">Si</option>
+            <option value="no">No</option>
+        </select>
             
         <button type="submit" class="btn_form">Guardar</button>
     </form>

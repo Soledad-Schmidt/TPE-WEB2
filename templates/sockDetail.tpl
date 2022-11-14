@@ -8,6 +8,7 @@
             <th>Talle</th>
             <th>Precio</th>
             <th>Marca</th>
+            <th>Oferta</th>
         </tr>
        
         <tr>
@@ -16,6 +17,7 @@
             <td>{$sock->size}</td>
             <td>{$sock->price}</td>
             <td><a href="socksbybrand/{$sock->name}">{$sock->name}</a></td>
+            <td>{$sock->sale}</td>
         </tr> 
         
     </table>

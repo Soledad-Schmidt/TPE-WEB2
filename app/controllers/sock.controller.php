@@ -34,7 +34,14 @@ class SockController {
         $this->view->showSock($sock);
     }
 
+    function showSale(){
+        $socks = $this->modelSocks->getSale();
+       
+        $this->view->showSale($socks);
+    }
+
     function delSock($id) {
+        
         $this->modelSocks->deleteSock($id);
         header("Location:" . BASE_URL . "socks");
     }
@@ -46,7 +53,8 @@ class SockController {
         $size = $_POST['size'];
         $price = $_POST['price'];
         $brand = $_POST['id_brand'];
-        $this->modelSocks->insertSock($model, $color, $size, $price, $brand);
+        $sale = $_POST['sale'];
+        $this->modelSocks->insertSock($model, $color, $size, $price, $brand, $sale);
         header("Location:" . BASE_URL . "socks");
     }
 
@@ -70,8 +78,9 @@ class SockController {
         $size = $_POST['size'];
         $price = $_POST['price'];
         $brand = $_POST['id_brand'];
+        $sale = $_POST['sale'];
         $id_sock = $_POST['id_sock'];
-        $this->modelSocks->updateSock($id_sock, $model, $color, $size, $price, $brand);
+        $this->modelSocks->updateSock($id_sock, $model, $color, $size, $price, $brand, $sale);
         header("Location:" . BASE_URL . "socks");
     }
 }

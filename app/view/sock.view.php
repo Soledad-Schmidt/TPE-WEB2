@@ -33,4 +33,10 @@ class SockView {
         $this->smarty->assign('sock', $sock);
         $this->smarty->display('templates/form-update-sock.tpl');
     }
+
+    function showSale($socks){
+        $this->smarty->assign('titulo', 'Lista de Ofertas');
+        $this->smarty->assign('socks', $socks);
+        $this->smarty->display('templates/socksSale.tpl');
+    }
 }

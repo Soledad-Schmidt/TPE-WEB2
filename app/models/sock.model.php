@@ -40,19 +40,29 @@ class SockModel {
         $query->execute([$id]); 
     }
 
-    function insertSock($model, $color, $size, $price, $brand) {
-        $query = $this->db->prepare('INSERT INTO sock (model, color, size, price, id_brand) 
-                                    VALUES (?, ?, ?, ?, ?)');
-        $query->execute([$model, $color, $size, $price, $brand]);
+    function insertSock($model, $color, $size, $price, $brand, $sale) {
+        $query = $this->db->prepare('INSERT INTO sock (model, color, size, price, id_brand, sale) 
+                                    VALUES (?, ?, ?, ?, ?, ?)');
+        $query->execute([$model, $color, $size, $price, $brand, $sale]);
         
         //obtengo y devuelvo el ID de la media nueva
         return $this->db->lastInsertId();
     }
 
-    function updateSock( $id_sock, $model, $color, $size, $price, $brand) {
+    function updateSock( $id_sock, $model, $color, $size, $price, $brand, $sale) {
         $query = $this->db->prepare('UPDATE sock 
-                                    SET model=?, color=?, size=?, price=?, id_brand=?
+                                    SET model=?, color=?, size=?, price=?, id_brand=?, sale=?
                                     WHERE id_sock=?');
-        $query->execute([$model, $color, $size, $price, $brand, $id_sock]);
+        $query->execute([$model, $color, $size, $price, $brand, $sale, $id_sock]);
+    }
+
+    function getSale(){
+        $query = $this->db->prepare("SELECT a. *, b.* 
+                                    FROM sock a 
+                                    INNER JOIN brand b ON a.id_brand = b.id_brand
+                                    WHERE sale = 'si'");
+        $query->execute(); 
+        $socks = $query->fetchAll(PDO::FETCH_OBJ);  
+        return $socks;
     }
 }

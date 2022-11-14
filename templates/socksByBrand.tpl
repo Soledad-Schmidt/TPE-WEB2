@@ -5,11 +5,13 @@
         <tr>
             <th>Marca</th>
             <th>Modelo</th>
+            <th>Oferta</th>
         </tr>
         {foreach from=$socksByBrand item=$i}
         <tr>
             <td>{$i->name}</td>
             <td>{$i->model}</td>
+            <td>{$i->sale}</td>
         </tr> 
         {/foreach}
     </table>

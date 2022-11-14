@@ -8,7 +8,6 @@
             <th>Talle</th>
             <th>Precio</th>
             <th>Marca</th>
-            <th>Oferta</th>
         </tr>
         {foreach from=$socks item=$i}
             <tr>
@@ -17,11 +16,6 @@
                 <td>{$i->size}</td>
                 <td>{$i->price}</td>
                 <td><a href="socksbybrand/{$i->name}">{$i->name}</a></td> 
-                <td>{$i->sale}</td>
-                {if (isset($smarty.session.USER_ID))}
-                    <td><button><a href="deletesock/{$i->id_sock}">Borrar</a></button></td>
-                    <td><button><a href="editsock/{$i->id_sock}">Editar</a></button></td>  
-                {/if}
             </tr>
         {/foreach} 
     </table>
